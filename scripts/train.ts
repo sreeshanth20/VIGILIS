@@ -1,5 +1,5 @@
 /**
- * AEGIS training pipeline.
+ * VIGILIS training pipeline.
  *
  *   bun run scripts/train.ts
  *
@@ -92,7 +92,7 @@ function scoreLogistic(model: LogisticModel, X: number[][]): number[] {
 
 async function main() {
   const t0 = Date.now();
-  console.log(`AEGIS training pipeline — seed=${SEED}`);
+  console.log(`VIGILIS training pipeline — seed=${SEED}`);
   console.log(`Generating ${N} transactions...`);
   const { transactions } = generateDataset({ seed: SEED, count: N });
   console.log(`Generated ${transactions.length} transactions`);

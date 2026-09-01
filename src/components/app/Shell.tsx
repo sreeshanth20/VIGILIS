@@ -30,13 +30,13 @@ export function Shell({ children }: { children: React.ReactNode }) {
       <aside className="hidden md:flex w-[244px] shrink-0 flex-col border-r border-border bg-sidebar sticky top-0 h-screen">
         <div className="px-5 pt-6 pb-4 border-b border-sidebar-border">
           <div className="flex items-center gap-2.5">
-            <div className="relative flex h-9 w-9 items-center justify-center rounded-lg bg-primary/15 border border-primary/40">
+            <div className="relative flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 border border-primary/30">
               <Shield className="h-5 w-5 text-primary" />
-              <span className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full bg-risk-high ring-2 ring-sidebar animate-aegis-pulse" />
+              <span className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full bg-risk-high ring-2 ring-background animate-vigilis-pulse" />
             </div>
             <div className="leading-tight">
-              <div className="text-[15px] font-semibold tracking-tight">AEGIS</div>
-              <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">Loss Defense</div>
+              <div className="text-[15px] font-semibold tracking-tight">VIGILIS</div>
+              <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">Risk Intelligence</div>
             </div>
           </div>
         </div>
@@ -72,7 +72,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
                 <Activity className="h-3.5 w-3.5 text-risk-normal" />
                 <span className="text-[11px] font-medium text-muted-foreground">Model Status</span>
               </div>
-              <span className="h-1.5 w-1.5 rounded-full bg-risk-normal animate-aegis-pulse" />
+              <span className="h-1.5 w-1.5 rounded-full bg-risk-normal animate-vigilis-pulse" />
             </div>
             <div className="mt-2 text-[11px] text-muted-foreground space-y-1">
               <div className="flex justify-between"><span>ROC-AUC</span><span className="tnum text-foreground">{meta.rocAuc.toFixed(3)}</span></div>
@@ -91,7 +91,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
         <div className="flex items-center justify-between px-4 h-14">
           <div className="flex items-center gap-2">
             <Shield className="h-5 w-5 text-primary" />
-            <span className="font-semibold tracking-tight">AEGIS</span>
+            <span className="font-semibold tracking-tight">VIGILIS</span>
           </div>
           <div className="flex items-center gap-1">
             {NAV.map((item) => {
@@ -129,9 +129,9 @@ function Footer({ rocAuc, prAuc, treeCount }: { rocAuc: number; prAuc: number; t
     <footer className="mt-auto border-t border-border bg-card/30 px-6 py-3 text-[11px] text-muted-foreground">
       <div className="flex flex-wrap items-center justify-between gap-2 max-w-[1400px] mx-auto">
         <div className="flex items-center gap-3">
-          <span className="font-medium text-foreground/80">AEGIS</span>
+          <span className="font-medium text-foreground/80">VIGILIS</span>
           <span className="text-muted-foreground/60">·</span>
-          <span>Merchant Loss Defense Intelligence</span>
+          <span>AI Risk Intelligence Platform</span>
           <span className="text-muted-foreground/60">·</span>
           <span>Defense-only</span>
         </div>

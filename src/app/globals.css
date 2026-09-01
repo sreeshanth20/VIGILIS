@@ -6,8 +6,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -44,108 +44,120 @@
 }
 
 /*
- * AEGIS — Merchant Loss Defense Intelligence
- * Design system: premium dark, warm charcoal surfaces, burnt-amber accent.
- * Inspired by Vercel/Linear/Stripe developer-tool aesthetics.
+ * VIGILIS — AI Risk Intelligence
+ * Design system: premium light-first, clean white surfaces, sophisticated blue/indigo accent.
+ * Inspired by Vercel/Linear/Stripe/Brex enterprise fintech aesthetic.
  */
 
 :root {
   --radius: 0.5rem;
 
-  /* Surfaces — warm charcoal (not pure black) */
-  --background: oklch(0.14 0.004 60);
-  --foreground: oklch(0.96 0.008 60);
+  /* Surfaces — white-first, clean and premium */
+  --background: oklch(0.99 0.0005 60);
+  --foreground: oklch(0.15 0.006 240);
 
-  --card: oklch(0.17 0.005 60);
-  --card-foreground: oklch(0.96 0.008 60);
+  --card: oklch(1.0 0 60);
+  --card-foreground: oklch(0.15 0.006 240);
 
-  --popover: oklch(0.18 0.006 60);
-  --popover-foreground: oklch(0.96 0.008 60);
+  --popover: oklch(1.0 0 60);
+  --popover-foreground: oklch(0.15 0.006 240);
 
-  /* Primary = amber (defense / signal) */
-  --primary: oklch(0.72 0.16 55);
-  --primary-foreground: oklch(0.16 0.01 60);
+  /* Primary = professional indigo/blue (intelligence, trust, precision) */
+  --primary: oklch(0.55 0.15 260);
+  --primary-foreground: oklch(1.0 0 60);
 
-  --secondary: oklch(0.22 0.006 60);
-  --secondary-foreground: oklch(0.92 0.008 60);
+  --secondary: oklch(0.96 0.003 60);
+  --secondary-foreground: oklch(0.15 0.006 240);
 
-  --muted: oklch(0.21 0.005 60);
-  --muted-foreground: oklch(0.66 0.012 60);
+  --muted: oklch(0.93 0.002 60);
+  --muted-foreground: oklch(0.55 0.008 240);
 
-  --accent: oklch(0.24 0.01 60);
-  --accent-foreground: oklch(0.96 0.008 60);
+  --accent: oklch(0.56 0.14 260);
+  --accent-foreground: oklch(1.0 0 60);
 
   --destructive: oklch(0.62 0.22 27);
-  --destructive-foreground: oklch(0.98 0.01 60);
+  --destructive-foreground: oklch(1.0 0 60);
 
-  --border: oklch(0.26 0.008 60);
-  --input: oklch(0.22 0.006 60);
-  --ring: oklch(0.72 0.16 55);
+  --border: oklch(0.92 0.003 60);
+  --input: oklch(0.97 0.002 60);
+  --ring: oklch(0.55 0.15 260);
 
-  --chart-1: oklch(0.72 0.16 55);   /* amber */
-  --chart-2: oklch(0.65 0.13 155);  /* emerald */
-  --chart-3: oklch(0.62 0.22 27);  /* red */
+  --chart-1: oklch(0.55 0.15 260);   /* professional blue */
+  --chart-2: oklch(0.58 0.13 155);  /* teal */
+  --chart-3: oklch(0.62 0.22 27);  /* red (risk) */
   --chart-4: oklch(0.68 0.17 45);  /* orange */
-  --chart-5: oklch(0.78 0.14 80);  /* yellow */
+  --chart-5: oklch(0.78 0.14 80);  /* amber */
 
-  --sidebar: oklch(0.12 0.004 60);
-  --sidebar-foreground: oklch(0.92 0.008 60);
-  --sidebar-primary: oklch(0.72 0.16 55);
-  --sidebar-primary-foreground: oklch(0.16 0.01 60);
-  --sidebar-accent: oklch(0.22 0.006 60);
-  --sidebar-accent-foreground: oklch(0.96 0.008 60);
-  --sidebar-border: oklch(0.22 0.006 60);
-  --sidebar-ring: oklch(0.72 0.16 55);
+  --sidebar: oklch(0.97 0.001 60);
+  --sidebar-foreground: oklch(0.15 0.006 240);
+  --sidebar-primary: oklch(0.55 0.15 260);
+  --sidebar-primary-foreground: oklch(1.0 0 60);
+  --sidebar-accent: oklch(0.94 0.002 60);
+  --sidebar-accent-foreground: oklch(0.55 0.15 260);
+  --sidebar-border: oklch(0.92 0.003 60);
+  --sidebar-ring: oklch(0.55 0.15 260);
 
-  /* Risk-band specific tokens */
+  /* Risk-band specific tokens — semantic with light backgrounds */
   --risk-critical: oklch(0.62 0.22 27);
-  --risk-critical-bg: oklch(0.62 0.22 27 / 0.14);
-  --risk-critical-fg: oklch(0.85 0.16 27);
+  --risk-critical-bg: oklch(0.97 0.04 27);
+  --risk-critical-fg: oklch(0.52 0.18 27);
   --risk-high: oklch(0.68 0.17 45);
-  --risk-high-bg: oklch(0.68 0.17 45 / 0.14);
-  --risk-high-fg: oklch(0.85 0.14 45);
+  --risk-high-bg: oklch(0.98 0.03 45);
+  --risk-high-fg: oklch(0.56 0.15 45);
   --risk-elevated: oklch(0.78 0.14 80);
-  --risk-elevated-bg: oklch(0.78 0.14 80 / 0.14);
-  --risk-elevated-fg: oklch(0.88 0.12 80);
-  --risk-normal: oklch(0.65 0.13 155);
-  --risk-normal-bg: oklch(0.65 0.13 155 / 0.14);
-  --risk-normal-fg: oklch(0.82 0.12 155);
+  --risk-elevated-bg: oklch(0.98 0.02 80);
+  --risk-elevated-fg: oklch(0.62 0.13 80);
+  --risk-normal: oklch(0.58 0.13 155);
+  --risk-normal-bg: oklch(0.97 0.03 155);
+  --risk-normal-fg: oklch(0.48 0.11 155);
 }
 
-.dark {
-  /* Dark mode is the default; values mirror :root */
-  --background: oklch(0.14 0.004 60);
-  --foreground: oklch(0.96 0.008 60);
-  --card: oklch(0.17 0.005 60);
-  --card-foreground: oklch(0.96 0.008 60);
-  --popover: oklch(0.18 0.006 60);
-  --popover-foreground: oklch(0.96 0.008 60);
-  --primary: oklch(0.72 0.16 55);
-  --primary-foreground: oklch(0.16 0.01 60);
-  --secondary: oklch(0.22 0.006 60);
-  --secondary-foreground: oklch(0.92 0.008 60);
-  --muted: oklch(0.21 0.005 60);
-  --muted-foreground: oklch(0.66 0.012 60);
-  --accent: oklch(0.24 0.01 60);
-  --accent-foreground: oklch(0.96 0.008 60);
+.light {
+  /* Light mode (default) */
+  --background: oklch(0.99 0.0005 60);
+  --foreground: oklch(0.15 0.006 240);
+  --card: oklch(1.0 0 60);
+  --card-foreground: oklch(0.15 0.006 240);
+  --popover: oklch(1.0 0 60);
+  --popover-foreground: oklch(0.15 0.006 240);
+  --primary: oklch(0.55 0.15 260);
+  --primary-foreground: oklch(1.0 0 60);
+  --secondary: oklch(0.96 0.003 60);
+  --secondary-foreground: oklch(0.15 0.006 240);
+  --muted: oklch(0.93 0.002 60);
+  --muted-foreground: oklch(0.55 0.008 240);
+  --accent: oklch(0.56 0.14 260);
+  --accent-foreground: oklch(1.0 0 60);
   --destructive: oklch(0.62 0.22 27);
-  --destructive-foreground: oklch(0.98 0.01 60);
-  --border: oklch(0.26 0.008 60);
-  --input: oklch(0.22 0.006 60);
-  --ring: oklch(0.72 0.16 55);
-  --chart-1: oklch(0.72 0.16 55);
-  --chart-2: oklch(0.65 0.13 155);
+  --destructive-foreground: oklch(1.0 0 60);
+  --border: oklch(0.92 0.003 60);
+  --input: oklch(0.97 0.002 60);
+  --ring: oklch(0.55 0.15 260);
+  --chart-1: oklch(0.55 0.15 260);
+  --chart-2: oklch(0.58 0.13 155);
   --chart-3: oklch(0.62 0.22 27);
   --chart-4: oklch(0.68 0.17 45);
   --chart-5: oklch(0.78 0.14 80);
-  --sidebar: oklch(0.12 0.004 60);
-  --sidebar-foreground: oklch(0.92 0.008 60);
-  --sidebar-primary: oklch(0.72 0.16 55);
-  --sidebar-primary-foreground: oklch(0.16 0.01 60);
-  --sidebar-accent: oklch(0.22 0.006 60);
-  --sidebar-accent-foreground: oklch(0.96 0.008 60);
-  --sidebar-border: oklch(0.22 0.006 60);
-  --sidebar-ring: oklch(0.72 0.16 55);
+  --sidebar: oklch(0.97 0.001 60);
+  --sidebar-foreground: oklch(0.15 0.006 240);
+  --sidebar-primary: oklch(0.55 0.15 260);
+  --sidebar-primary-foreground: oklch(1.0 0 60);
+  --sidebar-accent: oklch(0.94 0.002 60);
+  --sidebar-accent-foreground: oklch(0.55 0.15 260);
+  --sidebar-border: oklch(0.92 0.003 60);
+  --sidebar-ring: oklch(0.55 0.15 260);
+  --risk-critical: oklch(0.62 0.22 27);
+  --risk-critical-bg: oklch(0.97 0.04 27);
+  --risk-critical-fg: oklch(0.52 0.18 27);
+  --risk-high: oklch(0.68 0.17 45);
+  --risk-high-bg: oklch(0.98 0.03 45);
+  --risk-high-fg: oklch(0.56 0.15 45);
+  --risk-elevated: oklch(0.78 0.14 80);
+  --risk-elevated-bg: oklch(0.98 0.02 80);
+  --risk-elevated-fg: oklch(0.62 0.13 80);
+  --risk-normal: oklch(0.58 0.13 155);
+  --risk-normal-bg: oklch(0.97 0.03 155);
+  --risk-normal-fg: oklch(0.48 0.11 155);
 }
 
 * {
@@ -161,7 +173,7 @@ body {
 /* Numeric / tabular data uses mono + tabular figures */
 .tnum {
   font-variant-numeric: tabular-nums;
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-family: var(--font-mono);
 }
 
 /* Custom scrollbar */
@@ -173,22 +185,22 @@ body {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: oklch(0.30 0.008 60);
+  background: oklch(0.85 0.003 60);
   border-radius: 8px;
   border: 2px solid transparent;
   background-clip: padding-box;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: oklch(0.40 0.010 60);
+  background: oklch(0.75 0.004 60);
   background-clip: padding-box;
   border: 2px solid transparent;
 }
 
 /* Subtle ambient grid background for the app shell */
-.aegis-grid {
+.vigilis-grid {
   background-image:
-    linear-gradient(to right, oklch(0.22 0.006 60 / 0.4) 1px, transparent 1px),
-    linear-gradient(to bottom, oklch(0.22 0.006 60 / 0.4) 1px, transparent 1px);
+    linear-gradient(to right, oklch(0.94 0.002 60 / 0.5) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(0.94 0.002 60 / 0.5) 1px, transparent 1px);
   background-size: 32px 32px;
   background-position: -1px -1px;
 }
@@ -212,18 +224,13 @@ body {
 .border-risk-elevated { border-color: var(--risk-elevated); }
 .border-risk-normal   { border-color: var(--risk-normal); }
 
-/* Glow accent for primary actions */
-.glow-amber {
-  box-shadow: 0 0 0 1px oklch(0.72 0.16 55 / 0.3), 0 4px 24px -8px oklch(0.72 0.16 55 / 0.5);
-}
-
 /* Soft pulse for live indicators */
-@keyframes aegis-pulse {
+@keyframes vigilis-pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.45; }
 }
-.animate-aegis-pulse {
-  animation: aegis-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+.animate-vigilis-pulse {
+  animation: vigilis-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 /* Focus ring */

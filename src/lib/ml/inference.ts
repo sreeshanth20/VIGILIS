@@ -100,7 +100,7 @@ export function getModel(): ModelArtifact {
   }
   if (!resolved) {
     throw new Error(
-      'AEGIS model artifact not found. Run `bun run train` (scripts/train.ts) to produce src/lib/ml/artifacts/model.json',
+      'VIGILIS model artifact not found. Run `bun run train` (scripts/train.ts) to produce src/lib/ml/artifacts/model.json',
     );
   }
   cachedPath = resolved;

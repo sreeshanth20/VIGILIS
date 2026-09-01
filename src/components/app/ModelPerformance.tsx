@@ -59,12 +59,12 @@ export function ModelPerformance() {
         <CurveCard title="ROC Curve" description="TPR vs FPR on held-out test set">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={rocCurve} margin={{ top: 8, right: 12, bottom: 0, left: -8 }}>
-              <CartesianGrid stroke="#272320" strokeDasharray="3 3" />
-              <XAxis dataKey="fpr" domain={[0, 1]} tickFormatter={(v) => v.toFixed(1)} tick={{ fill: '#98918b', fontSize: 10 }} tickLine={false} axisLine={false} label={{ value: 'FPR', position: 'insideBottom', offset: -2, fill: '#98918b', fontSize: 10 }} />
-              <YAxis domain={[0, 1]} tickFormatter={(v) => v.toFixed(1)} tick={{ fill: '#98918b', fontSize: 10 }} tickLine={false} axisLine={false} width={32} />
-              <Tooltip contentStyle={{ background: '#110f0d', border: '1px solid #272320', borderRadius: 6, fontSize: 12 }} formatter={(v: any) => Number(v).toFixed(3)} labelFormatter={(v) => `FPR ${Number(v).toFixed(3)}`} />
-              <Line type="monotone" dataKey="tpr" name="TPR" stroke="#ef852e" strokeWidth={2} dot={false} />
-              <ReferenceLine segment={[{ x: 0, y: 0 }, { x: 1, y: 1 }]} stroke="#5a5550" strokeDasharray="4 2" />
+              <CartesianGrid stroke="#e5e7eb" strokeDasharray="3 3" />
+              <XAxis dataKey="fpr" domain={[0, 1]} tickFormatter={(v) => v.toFixed(1)} tick={{ fill: '#6b7280', fontSize: 10 }} tickLine={false} axisLine={false} label={{ value: 'FPR', position: 'insideBottom', offset: -2, fill: '#6b7280', fontSize: 10 }} />
+              <YAxis domain={[0, 1]} tickFormatter={(v) => v.toFixed(1)} tick={{ fill: '#6b7280', fontSize: 10 }} tickLine={false} axisLine={false} width={32} />
+              <Tooltip contentStyle={{ background: '#ffffff', border: '1px solid #e5e7eb', borderRadius: 6, fontSize: 12, color: '#1f2937', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)' }} formatter={(v: any) => Number(v).toFixed(3)} labelFormatter={(v) => `FPR ${Number(v).toFixed(3)}`} />
+              <Line type="monotone" dataKey="tpr" name="TPR" stroke="#3b82f6" strokeWidth={2} dot={false} />
+              <ReferenceLine segment={[{ x: 0, y: 0 }, { x: 1, y: 1 }]} stroke="#d1d5db" strokeDasharray="4 2" />
             </LineChart>
           </ResponsiveContainer>
           <div className="mt-2 text-[11px] text-muted-foreground flex justify-between">
@@ -76,12 +76,12 @@ export function ModelPerformance() {
         <CurveCard title="Precision-Recall Curve" description="Precision vs Recall on held-out test set">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={prCurve} margin={{ top: 8, right: 12, bottom: 0, left: -8 }}>
-              <CartesianGrid stroke="#272320" strokeDasharray="3 3" />
-              <XAxis dataKey="recall" domain={[0, 1]} tickFormatter={(v) => v.toFixed(1)} tick={{ fill: '#98918b', fontSize: 10 }} tickLine={false} axisLine={false} label={{ value: 'Recall', position: 'insideBottom', offset: -2, fill: '#98918b', fontSize: 10 }} />
-              <YAxis domain={[0, 1]} tickFormatter={(v) => v.toFixed(1)} tick={{ fill: '#98918b', fontSize: 10 }} tickLine={false} axisLine={false} width={32} />
-              <Tooltip contentStyle={{ background: '#110f0d', border: '1px solid #272320', borderRadius: 6, fontSize: 12 }} formatter={(v: any) => Number(v).toFixed(3)} labelFormatter={(v) => `Recall ${Number(v).toFixed(3)}`} />
-              <Line type="monotone" dataKey="precision" name="Precision" stroke="#ef852e" strokeWidth={2} dot={false} />
-              <ReferenceLine y={meta.testPositiveRate} stroke="#5a5550" strokeDasharray="4 2" />
+              <CartesianGrid stroke="#e5e7eb" strokeDasharray="3 3" />
+              <XAxis dataKey="recall" domain={[0, 1]} tickFormatter={(v) => v.toFixed(1)} tick={{ fill: '#6b7280', fontSize: 10 }} tickLine={false} axisLine={false} label={{ value: 'Recall', position: 'insideBottom', offset: -2, fill: '#6b7280', fontSize: 10 }} />
+              <YAxis domain={[0, 1]} tickFormatter={(v) => v.toFixed(1)} tick={{ fill: '#6b7280', fontSize: 10 }} tickLine={false} axisLine={false} width={32} />
+              <Tooltip contentStyle={{ background: '#ffffff', border: '1px solid #e5e7eb', borderRadius: 6, fontSize: 12, color: '#1f2937', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)' }} formatter={(v: any) => Number(v).toFixed(3)} labelFormatter={(v) => `Recall ${Number(v).toFixed(3)}`} />
+              <Line type="monotone" dataKey="precision" name="Precision" stroke="#3b82f6" strokeWidth={2} dot={false} />
+              <ReferenceLine y={meta.testPositiveRate} stroke="#d1d5db" strokeDasharray="4 2" />
             </LineChart>
           </ResponsiveContainer>
           <div className="mt-2 text-[11px] text-muted-foreground flex justify-between">
@@ -101,12 +101,12 @@ export function ModelPerformance() {
         <CurveCard title="Calibration Curve" description="Predicted probability vs observed frequency">
           <ResponsiveContainer width="100%" height="100%">
             <ScatterChart margin={{ top: 8, right: 12, bottom: 0, left: -8 }}>
-              <CartesianGrid stroke="#272320" strokeDasharray="3 3" />
-              <XAxis dataKey="meanPred" domain={[0, 1]} type="number" tickFormatter={(v) => v.toFixed(1)} tick={{ fill: '#98918b', fontSize: 10 }} tickLine={false} axisLine={false} label={{ value: 'Predicted', position: 'insideBottom', offset: -2, fill: '#98918b', fontSize: 10 }} />
-              <YAxis dataKey="meanActual" domain={[0, 1]} type="number" tickFormatter={(v) => v.toFixed(1)} tick={{ fill: '#98918b', fontSize: 10 }} tickLine={false} axisLine={false} width={32} />
-              <Tooltip contentStyle={{ background: '#110f0d', border: '1px solid #272320', borderRadius: 6, fontSize: 12 }} formatter={(v: any) => Number(v).toFixed(3)} />
-              <ReferenceLine segment={[{ x: 0, y: 0 }, { x: 1, y: 1 }]} stroke="#5a5550" strokeDasharray="4 2" />
-              <Scatter data={calib} fill="#ef852e" />
+              <CartesianGrid stroke="#e5e7eb" strokeDasharray="3 3" />
+              <XAxis dataKey="meanPred" domain={[0, 1]} type="number" tickFormatter={(v) => v.toFixed(1)} tick={{ fill: '#6b7280', fontSize: 10 }} tickLine={false} axisLine={false} label={{ value: 'Predicted', position: 'insideBottom', offset: -2, fill: '#6b7280', fontSize: 10 }} />
+              <YAxis dataKey="meanActual" domain={[0, 1]} type="number" tickFormatter={(v) => v.toFixed(1)} tick={{ fill: '#6b7280', fontSize: 10 }} tickLine={false} axisLine={false} width={32} />
+              <Tooltip contentStyle={{ background: '#ffffff', border: '1px solid #e5e7eb', borderRadius: 6, fontSize: 12, color: '#1f2937', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)' }} formatter={(v: any) => Number(v).toFixed(3)} />
+              <ReferenceLine segment={[{ x: 0, y: 0 }, { x: 1, y: 1 }]} stroke="#d1d5db" strokeDasharray="4 2" />
+              <Scatter data={calib} fill="#3b82f6" />
             </ScatterChart>
           </ResponsiveContainer>
           <div className="mt-2 text-[11px] text-muted-foreground">
@@ -120,15 +120,15 @@ export function ModelPerformance() {
         <CurveCard title="Training History" description="Loss & validation PR-AUC over boosting iterations">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={trainingHistory.trainLoss.map((tl, i) => ({ iter: i, trainLoss: tl, valLoss: trainingHistory.valLoss[i] ?? null, valPrAuc: trainingHistory.valPrAuc[i] ?? null }))} margin={{ top: 8, right: 8, bottom: 0, left: -8 }}>
-              <CartesianGrid stroke="#272320" strokeDasharray="3 3" vertical={false} />
-              <XAxis dataKey="iter" tick={{ fill: '#98918b', fontSize: 10 }} tickLine={false} axisLine={false} label={{ value: 'Iteration', position: 'insideBottom', offset: -2, fill: '#98918b', fontSize: 10 }} />
-              <YAxis yAxisId="left" tickFormatter={(v) => v.toFixed(2)} tick={{ fill: '#98918b', fontSize: 10 }} tickLine={false} axisLine={false} width={32} />
-              <YAxis yAxisId="right" orientation="right" domain={[0, 1]} tickFormatter={(v) => v.toFixed(2)} tick={{ fill: '#98918b', fontSize: 10 }} tickLine={false} axisLine={false} width={32} />
-              <Tooltip contentStyle={{ background: '#110f0d', border: '1px solid #272320', borderRadius: 6, fontSize: 12 }} />
-              <ReferenceLine yAxisId="left" x={meta.bestIteration} stroke="#ef852e" strokeDasharray="4 2" />
-              <Line yAxisId="left" type="monotone" dataKey="trainLoss" name="Train loss" stroke="#ea6f2f" strokeWidth={1.5} dot={false} />
-              <Line yAxisId="left" type="monotone" dataKey="valLoss" name="Val loss" stroke="#ee3533" strokeWidth={1.5} dot={false} />
-              <Line yAxisId="right" type="monotone" dataKey="valPrAuc" name="Val PR-AUC" stroke="#3fa66b" strokeWidth={2} dot={false} />
+              <CartesianGrid stroke="#e5e7eb" strokeDasharray="3 3" vertical={false} />
+              <XAxis dataKey="iter" tick={{ fill: '#6b7280', fontSize: 10 }} tickLine={false} axisLine={false} label={{ value: 'Iteration', position: 'insideBottom', offset: -2, fill: '#6b7280', fontSize: 10 }} />
+              <YAxis yAxisId="left" tickFormatter={(v) => v.toFixed(2)} tick={{ fill: '#6b7280', fontSize: 10 }} tickLine={false} axisLine={false} width={32} />
+              <YAxis yAxisId="right" orientation="right" domain={[0, 1]} tickFormatter={(v) => v.toFixed(2)} tick={{ fill: '#6b7280', fontSize: 10 }} tickLine={false} axisLine={false} width={32} />
+              <Tooltip contentStyle={{ background: '#ffffff', border: '1px solid #e5e7eb', borderRadius: 6, fontSize: 12, color: '#1f2937', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)' }} />
+              <ReferenceLine yAxisId="left" x={meta.bestIteration} stroke="#3b82f6" strokeDasharray="4 2" />
+              <Line yAxisId="left" type="monotone" dataKey="trainLoss" name="Train loss" stroke="#ea580c" strokeWidth={1.5} dot={false} />
+              <Line yAxisId="left" type="monotone" dataKey="valLoss" name="Val loss" stroke="#dc2626" strokeWidth={1.5} dot={false} />
+              <Line yAxisId="right" type="monotone" dataKey="valPrAuc" name="Val PR-AUC" stroke="#14b8a6" strokeWidth={2} dot={false} />
             </LineChart>
           </ResponsiveContainer>
         </CurveCard>
@@ -140,13 +140,13 @@ export function ModelPerformance() {
         <div className="h-[360px]">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={importances} layout="vertical" margin={{ top: 0, right: 16, bottom: 0, left: 8 }}>
-              <CartesianGrid stroke="#272320" strokeDasharray="3 3" horizontal={false} />
-              <XAxis type="number" tickFormatter={(v) => `${(v * 100).toFixed(0)}%`} tick={{ fill: '#98918b', fontSize: 10 }} tickLine={false} axisLine={false} domain={[0, 'dataMax']} />
-              <YAxis type="category" dataKey="feature" tick={{ fill: '#d5d0cc', fontSize: 10 }} tickLine={false} axisLine={false} width={180} />
-              <Tooltip contentStyle={{ background: '#110f0d', border: '1px solid #272320', borderRadius: 6, fontSize: 12 }} formatter={(v: any) => formatPct(v, 2)} />
+              <CartesianGrid stroke="#e5e7eb" strokeDasharray="3 3" horizontal={false} />
+              <XAxis type="number" tickFormatter={(v) => `${(v * 100).toFixed(0)}%`} tick={{ fill: '#6b7280', fontSize: 10 }} tickLine={false} axisLine={false} domain={[0, 'dataMax']} />
+              <YAxis type="category" dataKey="feature" tick={{ fill: '#6b7280', fontSize: 10 }} tickLine={false} axisLine={false} width={180} />
+              <Tooltip contentStyle={{ background: '#ffffff', border: '1px solid #e5e7eb', borderRadius: 6, fontSize: 12, color: '#1f2937', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)' }} formatter={(v: any) => formatPct(v, 2)} />
               <Bar dataKey="importance" name="Importance" radius={[0, 3, 3, 0]} barSize={12}>
                 {importances.map((_: any, i: number) => (
-                  <Cell key={i} fill={i < 3 ? '#ef852e' : i < 6 ? '#ea6f2f' : 'rgba(63,166,107,0.7)'} />
+                  <Cell key={i} fill={i < 3 ? '#3b82f6' : i < 6 ? '#ea580c' : 'rgba(20, 184, 166, 0.7)'} />
                 ))}
               </Bar>
             </BarChart>

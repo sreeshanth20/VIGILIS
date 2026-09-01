@@ -16,10 +16,10 @@ import { useMemo } from 'react';
 
 const BAND_ORDER = ['critical', 'high', 'elevated', 'normal'] as const;
 const BAND_COLORS: Record<string, string> = {
-  critical: '#ee3533',
-  high: '#ea6f2f',
-  elevated: '#e6ac3d',
-  normal: '#3fa66b',
+  critical: '#dc2626',
+  high: '#ea580c',
+  elevated: '#ca8a04',
+  normal: '#0d9488',
 };
 
 export function Overview() {
@@ -40,15 +40,15 @@ export function Overview() {
       {/* Header */}
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <div className="text-[10px] uppercase tracking-[0.18em] text-primary/80 mb-1">Risk Intelligence</div>
-          <h1 className="text-2xl font-semibold tracking-tight">Merchant Loss Overview</h1>
+          <div className="text-[10px] uppercase tracking-[0.18em] text-primary/80 mb-1">Risk Assessment</div>
+          <h1 className="text-2xl font-semibold tracking-tight">Transaction Risk Dashboard</h1>
           <p className="text-sm text-muted-foreground mt-1">
-            Real-time exposure to chargebacks &amp; high-cost returns across {formatNumber(k.totalTransactions)} transactions.
+            Real-time risk exposure analysis across {formatNumber(k.totalTransactions)} transactions.
             {' '}Operating threshold at <span className="tnum text-foreground">{formatPct(m.operatingThreshold, 0)}</span>.
           </p>
         </div>
         <div className="flex items-center gap-2 text-[11px] text-muted-foreground">
-          <span className="h-1.5 w-1.5 rounded-full bg-risk-normal animate-aegis-pulse" />
+          <span className="h-1.5 w-1.5 rounded-full bg-risk-normal animate-vigilis-pulse" />
           Live · model v{m.version} · trained on {formatNumber(m.trainCount)} txns
         </div>
       </div>
@@ -96,22 +96,22 @@ export function Overview() {
               <ComposedChart data={trend} margin={{ top: 8, right: 8, bottom: 0, left: -8 }}>
                 <defs>
                   <linearGradient id="gradVol" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#ef852e" stopOpacity={0.45} />
-                    <stop offset="100%" stopColor="#ef852e" stopOpacity={0.02} />
+                    <stop offset="0%" stopColor="#3b82f6" stopOpacity={0.2} />
+                    <stop offset="100%" stopColor="#3b82f6" stopOpacity={0.02} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid stroke="#272320" strokeDasharray="3 3" vertical={false} />
-                <XAxis dataKey="day" tick={{ fill: '#98918b', fontSize: 10 }} tickLine={false} axisLine={false} minTickGap={32} />
-                <YAxis yAxisId="left" tick={{ fill: '#98918b', fontSize: 10 }} tickLine={false} axisLine={false} width={36} />
-                <YAxis yAxisId="right" orientation="right" tick={{ fill: '#98918b', fontSize: 10 }} tickLine={false} axisLine={false} width={36} />
+                <CartesianGrid stroke="#e5e7eb" strokeDasharray="3 3" vertical={false} />
+                <XAxis dataKey="day" tick={{ fill: '#6b7280', fontSize: 10 }} tickLine={false} axisLine={false} minTickGap={32} />
+                <YAxis yAxisId="left" tick={{ fill: '#6b7280', fontSize: 10 }} tickLine={false} axisLine={false} width={36} />
+                <YAxis yAxisId="right" orientation="right" tick={{ fill: '#6b7280', fontSize: 10 }} tickLine={false} axisLine={false} width={36} />
                 <Tooltip
-                  contentStyle={{ background: '#110f0d', border: '1px solid #272320', borderRadius: 6, fontSize: 12, color: '#f6f1ed' }}
-                  labelStyle={{ color: '#f6f1ed' }}
-                  itemStyle={{ color: '#d5d0cc' }}
+                  contentStyle={{ background: '#ffffff', border: '1px solid #e5e7eb', borderRadius: 6, fontSize: 12, color: '#1f2937', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)' }}
+                  labelStyle={{ color: '#1f2937' }}
+                  itemStyle={{ color: '#6b7280' }}
                 />
-                <Area yAxisId="left" type="monotone" dataKey="count" name="Orders" stroke="#ff9b50" strokeWidth={2} fill="url(#gradVol)" />
-                <Bar yAxisId="left" dataKey="flagged" name="Flagged" fill="#ea6f2f" opacity={0.9} barSize={10} radius={[2, 2, 0, 0]} />
-                <Line yAxisId="right" type="monotone" dataKey="positive" name="Loss events" stroke="#ee3533" strokeWidth={2.5} dot={false} />
+                <Area yAxisId="left" type="monotone" dataKey="count" name="Orders" stroke="#2563eb" strokeWidth={2} fill="url(#gradVol)" />
+                <Bar yAxisId="left" dataKey="flagged" name="Flagged" fill="#ea580c" opacity={0.8} barSize={10} radius={[2, 2, 0, 0]} />
+                <Line yAxisId="right" type="monotone" dataKey="positive" name="Loss events" stroke="#dc2626" strokeWidth={2.5} dot={false} />
               </ComposedChart>
             </ResponsiveContainer>
           </div>
@@ -250,17 +250,17 @@ export function Overview() {
         <div className="h-[200px]">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={categoryBreakdown} layout="vertical" margin={{ top: 0, right: 16, bottom: 0, left: 8 }}>
-              <CartesianGrid stroke="#272320" strokeDasharray="3 3" horizontal={false} />
-              <XAxis type="number" tick={{ fill: '#98918b', fontSize: 10 }} tickLine={false} axisLine={false} tickFormatter={(v) => formatINR(v, { compact: true })} />
-              <YAxis type="category" dataKey="category" tick={{ fill: '#c8c3bf', fontSize: 11 }} tickLine={false} axisLine={false} width={120} />
+              <CartesianGrid stroke="#e5e7eb" strokeDasharray="3 3" horizontal={false} />
+              <XAxis type="number" tick={{ fill: '#6b7280', fontSize: 10 }} tickLine={false} axisLine={false} tickFormatter={(v) => formatINR(v, { compact: true })} />
+              <YAxis type="category" dataKey="category" tick={{ fill: '#6b7280', fontSize: 11 }} tickLine={false} axisLine={false} width={120} />
               <Tooltip
-                contentStyle={{ background: '#110f0d', border: '1px solid #272320', borderRadius: 6, fontSize: 12, color: '#f6f1ed' }}
-                cursor={{ fill: 'rgba(29,26,24,0.4)' }}
+                contentStyle={{ background: '#ffffff', border: '1px solid #e5e7eb', borderRadius: 6, fontSize: 12, color: '#1f2937', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)' }}
+                cursor={{ fill: 'rgba(0,0,0,0.05)' }}
                 formatter={(v: any, n) => [formatINR(v, { compact: n === 'lossCount' }), n === 'lossAmount' ? 'Loss' : 'Count']}
-                labelStyle={{ color: '#f6f1ed' }}
-                itemStyle={{ color: '#d5d0cc' }}
+                labelStyle={{ color: '#1f2937' }}
+                itemStyle={{ color: '#6b7280' }}
               />
-              <Bar dataKey="lossAmount" name="lossAmount" fill="#ea6f2f" radius={[0, 3, 3, 0]} barSize={16} />
+              <Bar dataKey="lossAmount" name="lossAmount" fill="#ea580c" radius={[0, 3, 3, 0]} barSize={16} />
             </BarChart>
           </ResponsiveContainer>
         </div>

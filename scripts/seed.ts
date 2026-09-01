@@ -1,5 +1,5 @@
 /**
- * AEGIS database seeder.
+ * VIGILIS database seeder.
  *
  *   bun run scripts/seed.ts
  *
@@ -34,7 +34,7 @@ function riskBandFor(score: number, threshold: number): 'critical' | 'high' | 'e
 
 async function main() {
   const t0 = Date.now();
-  console.log('AEGIS seeder — generating dataset...');
+  console.log('VIGILIS seeder — generating dataset...');
   const { transactions } = generateDataset({ seed: SEED, count: N });
   console.log(`Generated ${transactions.length} transactions`);
 

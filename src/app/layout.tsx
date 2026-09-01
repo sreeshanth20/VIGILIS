@@ -1,29 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { ThemeProvider } from "next-themes";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "AEGIS — Merchant Loss Defense Intelligence",
+  title: "VIGILIS — AI Risk Intelligence Platform",
   description:
-    "AEGIS detects return-fraud and chargeback risk for Indian e-commerce merchants using a gradient-boosted model trained on realistic transaction data, with per-prediction explainability and financial impact analysis.",
+    "VIGILIS is an enterprise AI risk intelligence platform that detects financial fraud, chargebacks, and high-risk transactions using advanced machine learning with per-prediction explainability and financial impact analysis.",
   keywords: [
-    "AI risk management", "chargeback prevention", "return fraud",
-    "RTO", "Indian e-commerce", "machine learning", "explainable AI",
+    "AI risk management", "fraud detection", "chargeback prevention", "return fraud",
+    "machine learning", "explainable AI", "enterprise risk", "fintech",
   ],
-  authors: [{ name: "AEGIS" }],
+  authors: [{ name: "VIGILIS" }],
 };
 
 export default function RootLayout({
@@ -32,11 +21,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="dark">
+    <html lang="en" suppressHydrationWarning className="light">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground min-h-screen`}
+        className="antialiased bg-background text-foreground min-h-screen"
       >
-        <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark">
+        <ThemeProvider attribute="class" defaultTheme="light" forcedTheme="light">
           {children}
           <Toaster />
           <Sonner position="bottom-right" />

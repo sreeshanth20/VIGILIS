@@ -42,7 +42,7 @@ export async function POST(req: NextRequest) {
     const prompt = buildLLMPrompt(detail, topPositive, topNegative, operatingThreshold);
     const resp = await zai.chat.completions.create({
       messages: [
-        { role: 'system', content: 'You are AEGIS, a senior fraud-and-chargeback risk analyst for an Indian e-commerce merchant. You write concise, grounded, decision-focused briefs. You NEVER invent facts. You only use the data provided. Keep responses under 180 words, use short paragraphs, and end with a single recommended defensive action.' },
+        { role: 'system', content: 'You are VIGILIS, an expert AI risk intelligence analyst for enterprise fraud detection. You write concise, grounded, decision-focused briefs. You NEVER invent facts. You only use the data provided. Keep responses under 180 words, use short paragraphs, and end with a single recommended defensive action.' },
         { role: 'user', content: prompt },
       ],
       thinking: { type: 'disabled' },

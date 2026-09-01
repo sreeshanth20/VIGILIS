@@ -1,33 +1,36 @@
 'use client';
 
 /**
- * AEGIS chart color palette (hex).
+ * VIGILIS chart color palette (hex).
  *
  * These mirror the oklch design tokens in globals.css but are expressed as
  * hex because some rendering engines (notably headless Chromium used for
  * screenshots / PDF export) do not paint oklch() values supplied as SVG
  * presentation attributes. Using hex guarantees the charts render identically
  * in every environment.
+ *
+ * Premium light-first palette with professional blue/indigo accent.
  */
 
 export const C = {
-  amber: '#ef852e',
-  amberBright: '#ff9b50',
-  orange: '#ea6f2f',
-  red: '#ee3533',
-  emerald: '#3fa66b',
-  yellow: '#e6ac3d',
+  blue: '#3b82f6',
+  blueBright: '#2563eb',
+  indigo: '#6366f1',
+  teal: '#14b8a6',
+  red: '#dc2626',
+  orange: '#ea580c',
+  yellow: '#ca8a04',
 
-  grid: '#272320',
-  axis: '#98918b',
-  axisLight: '#c8c3bf',
+  grid: '#e5e7eb',
+  axis: '#6b7280',
+  axisLight: '#9ca3af',
 
-  tipBg: '#110f0d',
-  tipFg: '#f6f1ed',
-  tipMuted: '#d5d0cc',
+  tipBg: '#ffffff',
+  tipFg: '#1f2937',
+  tipMuted: '#6b7280',
 
-  cursor: 'rgba(29,26,24,0.5)',
-  bg: '#0a0908',
+  cursor: 'rgba(0,0,0,0.08)',
+  bg: '#f9fafb',
 };
 
 export const TOOLTIP_STYLE = {
@@ -36,6 +39,7 @@ export const TOOLTIP_STYLE = {
   borderRadius: 6,
   fontSize: 12,
   color: C.tipFg,
+  boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)',
 } as const;
 
 export const TOOLTIP_LABEL_STYLE = { color: C.tipFg } as const;

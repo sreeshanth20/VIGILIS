@@ -119,14 +119,14 @@ export function ThresholdTuner() {
         <CurveCard title="Precision / Recall / F1 vs Threshold" description="Classification trade-offs">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={sweep} margin={{ top: 8, right: 12, bottom: 0, left: -8 }}>
-              <CartesianGrid stroke="#272320" strokeDasharray="3 3" vertical={false} />
-              <XAxis dataKey="threshold" domain={[0, 1]} tickFormatter={(v) => `${(v * 100).toFixed(0)}%`} tick={{ fill: '#98918b', fontSize: 10 }} tickLine={false} axisLine={false} />
-              <YAxis domain={[0, 1]} tickFormatter={(v) => `${(v * 100).toFixed(0)}%`} tick={{ fill: '#98918b', fontSize: 10 }} tickLine={false} axisLine={false} width={36} />
-              <Tooltip contentStyle={{ background: '#110f0d', border: '1px solid #272320', borderRadius: 6, fontSize: 12 }} formatter={(v: any) => formatPct(v)} labelFormatter={(v) => `Threshold ${(v * 100).toFixed(0)}%`} />
-              <ReferenceLine x={threshold} stroke="#ef852e" strokeWidth={1} strokeDasharray="4 2" />
-              <Line type="monotone" dataKey="precision" name="Precision" stroke="#ef852e" strokeWidth={1.5} dot={false} />
-              <Line type="monotone" dataKey="recall" name="Recall" stroke="#3fa66b" strokeWidth={1.5} dot={false} />
-              <Line type="monotone" dataKey="f1" name="F1" stroke="#e6ac3d" strokeWidth={1.5} dot={false} strokeDasharray="4 2" />
+              <CartesianGrid stroke="#e5e7eb" strokeDasharray="3 3" vertical={false} />
+              <XAxis dataKey="threshold" domain={[0, 1]} tickFormatter={(v) => `${(v * 100).toFixed(0)}%`} tick={{ fill: '#6b7280', fontSize: 10 }} tickLine={false} axisLine={false} />
+              <YAxis domain={[0, 1]} tickFormatter={(v) => `${(v * 100).toFixed(0)}%`} tick={{ fill: '#6b7280', fontSize: 10 }} tickLine={false} axisLine={false} width={36} />
+              <Tooltip contentStyle={{ background: '#ffffff', border: '1px solid #e5e7eb', borderRadius: 6, fontSize: 12, color: '#1f2937', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)' }} formatter={(v: any) => formatPct(v)} labelFormatter={(v) => `Threshold ${(v * 100).toFixed(0)}%`} />
+              <ReferenceLine x={threshold} stroke="#3b82f6" strokeWidth={1} strokeDasharray="4 2" />
+              <Line type="monotone" dataKey="precision" name="Precision" stroke="#3b82f6" strokeWidth={1.5} dot={false} />
+              <Line type="monotone" dataKey="recall" name="Recall" stroke="#14b8a6" strokeWidth={1.5} dot={false} />
+              <Line type="monotone" dataKey="f1" name="F1" stroke="#ca8a04" strokeWidth={1.5} dot={false} strokeDasharray="4 2" />
             </LineChart>
           </ResponsiveContainer>
         </CurveCard>
@@ -134,14 +134,14 @@ export function ThresholdTuner() {
         <CurveCard title="Financial Impact vs Threshold" description="Prevented loss, FP cost, net savings">
           <ResponsiveContainer width="100%" height="100%">
             <ComposedChart data={sweep} margin={{ top: 8, right: 12, bottom: 0, left: -8 }}>
-              <CartesianGrid stroke="#272320" strokeDasharray="3 3" vertical={false} />
-              <XAxis dataKey="threshold" domain={[0, 1]} tickFormatter={(v) => `${(v * 100).toFixed(0)}%`} tick={{ fill: '#98918b', fontSize: 10 }} tickLine={false} axisLine={false} />
-              <YAxis tickFormatter={(v) => formatINR(v, { compact: true })} tick={{ fill: '#98918b', fontSize: 10 }} tickLine={false} axisLine={false} width={48} />
-              <Tooltip contentStyle={{ background: '#110f0d', border: '1px solid #272320', borderRadius: 6, fontSize: 12 }} formatter={(v: any) => formatINR(v)} labelFormatter={(v) => `Threshold ${(v * 100).toFixed(0)}%`} />
-              <ReferenceLine x={threshold} stroke="#ef852e" strokeWidth={1} strokeDasharray="4 2" />
-              <Area type="monotone" dataKey="preventedLoss" name="Prevented" stroke="#3fa66b" fill="rgba(63,166,107,0.18)" strokeWidth={1.5} />
-              <Area type="monotone" dataKey="falsePositiveCost" name="FP cost" stroke="#ee3533" fill="rgba(238,53,51,0.18)" strokeWidth={1.5} />
-              <Line type="monotone" dataKey="netSavings" name="Net savings" stroke="#ef852e" strokeWidth={2} dot={false} />
+              <CartesianGrid stroke="#e5e7eb" strokeDasharray="3 3" vertical={false} />
+              <XAxis dataKey="threshold" domain={[0, 1]} tickFormatter={(v) => `${(v * 100).toFixed(0)}%`} tick={{ fill: '#6b7280', fontSize: 10 }} tickLine={false} axisLine={false} />
+              <YAxis tickFormatter={(v) => formatINR(v, { compact: true })} tick={{ fill: '#6b7280', fontSize: 10 }} tickLine={false} axisLine={false} width={48} />
+              <Tooltip contentStyle={{ background: '#ffffff', border: '1px solid #e5e7eb', borderRadius: 6, fontSize: 12, color: '#1f2937', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)' }} formatter={(v: any) => formatINR(v)} labelFormatter={(v) => `Threshold ${(v * 100).toFixed(0)}%`} />
+              <ReferenceLine x={threshold} stroke="#3b82f6" strokeWidth={1} strokeDasharray="4 2" />
+              <Area type="monotone" dataKey="preventedLoss" name="Prevented" stroke="#14b8a6" fill="rgba(20, 184, 166, 0.1)" strokeWidth={1.5} />
+              <Area type="monotone" dataKey="falsePositiveCost" name="FP cost" stroke="#dc2626" fill="rgba(220, 38, 38, 0.1)" strokeWidth={1.5} />
+              <Line type="monotone" dataKey="netSavings" name="Net savings" stroke="#3b82f6" strokeWidth={2} dot={false} />
             </ComposedChart>
           </ResponsiveContainer>
         </CurveCard>
@@ -149,13 +149,13 @@ export function ThresholdTuner() {
         <CurveCard title="Investigation Workload vs Threshold" description="Cases flagged from the pending universe">
           <ResponsiveContainer width="100%" height="100%">
             <ComposedChart data={sweep} margin={{ top: 8, right: 12, bottom: 0, left: -8 }}>
-              <CartesianGrid stroke="#272320" strokeDasharray="3 3" vertical={false} />
-              <XAxis dataKey="threshold" domain={[0, 1]} tickFormatter={(v) => `${(v * 100).toFixed(0)}%`} tick={{ fill: '#98918b', fontSize: 10 }} tickLine={false} axisLine={false} />
-              <YAxis tickFormatter={(v) => formatNumber(v)} tick={{ fill: '#98918b', fontSize: 10 }} tickLine={false} axisLine={false} width={40} />
-              <Tooltip contentStyle={{ background: '#110f0d', border: '1px solid #272320', borderRadius: 6, fontSize: 12 }} formatter={(v: any) => formatNumber(v)} labelFormatter={(v) => `Threshold ${(v * 100).toFixed(0)}%`} />
-              <ReferenceLine x={threshold} stroke="#ef852e" strokeWidth={1} strokeDasharray="4 2" />
-              <Bar dataKey="totalFlagged" name="Flagged (pending)" fill="#ea6f2f" opacity={0.7} barSize={3} />
-              <Line type="monotone" dataKey="flagged" name="Flagged (realized)" stroke="#ef852e" strokeWidth={1.5} dot={false} />
+              <CartesianGrid stroke="#e5e7eb" strokeDasharray="3 3" vertical={false} />
+              <XAxis dataKey="threshold" domain={[0, 1]} tickFormatter={(v) => `${(v * 100).toFixed(0)}%`} tick={{ fill: '#6b7280', fontSize: 10 }} tickLine={false} axisLine={false} />
+              <YAxis tickFormatter={(v) => formatNumber(v)} tick={{ fill: '#6b7280', fontSize: 10 }} tickLine={false} axisLine={false} width={40} />
+              <Tooltip contentStyle={{ background: '#ffffff', border: '1px solid #e5e7eb', borderRadius: 6, fontSize: 12, color: '#1f2937', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)' }} formatter={(v: any) => formatNumber(v)} labelFormatter={(v) => `Threshold ${(v * 100).toFixed(0)}%`} />
+              <ReferenceLine x={threshold} stroke="#3b82f6" strokeWidth={1} strokeDasharray="4 2" />
+              <Bar dataKey="totalFlagged" name="Flagged (pending)" fill="#ea580c" opacity={0.7} barSize={3} />
+              <Line type="monotone" dataKey="flagged" name="Flagged (realized)" stroke="#3b82f6" strokeWidth={1.5} dot={false} />
             </ComposedChart>
           </ResponsiveContainer>
         </CurveCard>

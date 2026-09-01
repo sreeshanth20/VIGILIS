@@ -1,10 +1,10 @@
 {
-  "name": "aegis-merchant-loss-defense",
+  "name": "vigilis-ai-risk-intelligence",
   "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev -p 3000",
-    "build": "next build && cp -r .next/static .next/standalone/.next/ && cp -r public .next/standalone/",
+    "build": "next build",
     "start": "NODE_ENV=production bun .next/standalone/server.js",
     "lint": "eslint .",
     "test": "bun test tests/",

@@ -1,8 +1,8 @@
-# AEGIS — Merchant Loss Defense Intelligence
+# VIGILIS — AI Risk Intelligence
 
-> Stop the merchant losing money to fraud, returns, and chargebacks.
+> Real-time fraud detection and chargeback risk assessment for enterprise transactions.
 
-AEGIS is a focused **return-to-chargeback risk intelligence** product for Indian e-commerce merchants. It predicts the probability that a completed order will result in a chargeback or a high-cost return-to-origin (RTO) within 30 days, with a real gradient-boosted model, honest held-out evaluation, per-prediction explainability, financial-impact reasoning, and a premium investigation workflow.
+VIGILIS is an advanced **AI-powered risk intelligence platform** that predicts the probability of fraudulent transactions, chargebacks, and high-cost returns with a real gradient-boosted model, honest held-out evaluation, per-prediction explainability, financial-impact reasoning, and a premium investigation workflow.
 
 The system is **strictly defense-only**. It exposes no offensive capability. All analyst actions are protective (hold / escalate / approve / dismiss) and are written to an append-only audit log.
 
@@ -10,14 +10,14 @@ The system is **strictly defense-only**. It exposes no offensive capability. All
 
 ## What it does
 
-AEGIS addresses a single, well-scoped class of merchant loss: **chargebacks + high-cost returns (RTO / return-fraud)**. For every order it computes:
+VIGILIS is an intelligent risk assessment engine. For every transaction it computes:
 
 1. A **risk probability** from a genuine gradient-boosted decision-tree model (219 trees, trained locally).
 2. A **risk band** (critical / high / elevated / normal) relative to a configurable operating threshold.
 3. The **top contributing factors** for that specific prediction (tree-path-based feature attribution, SHAP-lite).
-4. The **expected financial loss** for the order, grounded in the payment method and category.
-5. **Behavioural & abuse-ring signals** — shared devices / IPs, customer velocity, address mismatches.
-6. The **customer's history** of prior orders, returns, and chargebacks.
+4. The **expected financial loss** for the transaction, grounded in historical data and outcomes.
+5. **Behavioral & anomaly signals** — device patterns, customer velocity, geographic mismatches.
+6. The **customer's history** of prior transactions, returns, and risk events.
 
 An analyst moves naturally from a high-level risk overview → the risk queue → an investigation drawer → an actionable decision. An optional LLM-generated **analyst brief** synthesises the model explanation into natural language (with a deterministic rule-based fallback so the feature always works offline).
 
@@ -36,7 +36,7 @@ The entire machine-learning pipeline is implemented **from scratch in pure TypeS
 | Stage | File | What it does |
 |-------|------|--------------|
 | Seeded RNG | `src/lib/ml/rng.ts` | mulberry32 PRNG — every step is reproducible from a single seed |
-| Synthetic data | `src/lib/ml/data.ts` | Generates a realistic Indian e-commerce transaction stream with a known latent risk process |
+| Synthetic data | `src/lib/ml/data.ts` | Generates a realistic transaction stream with a known latent risk process |
 | Feature engineering | `src/lib/ml/features.ts` | 41 features across 6 groups; identical transform at train & inference time |
 | Decision tree (CART) | `src/lib/ml/tree.ts` | Histogram-based quantile splits, L2-regularised leaf values |
 | Gradient boosting | `src/lib/ml/gbdt.ts` | Logistic-loss GBDT with row/column subsampling, early stopping, per-prediction contributions |
@@ -46,7 +46,7 @@ The entire machine-learning pipeline is implemented **from scratch in pure TypeS
 
 ### The data
 
-A reproducible synthetic generator (`seed = 20240117`) produces **24,000 transactions** across a 92-day horizon, grounded in real Indian e-commerce mechanics:
+A reproducible synthetic generator (`seed = 20240117`) produces **24,000 transactions** across a 92-day horizon, grounded in realistic transaction mechanics:
 
 - **Geography**: 38 Indian cities across tier 1/2/3, with tier-3 carrying elevated RTO risk
 - **Payments**: UPI / COD / Credit Card / Debit Card / Net Banking / Wallet / EMI with realistic mix and category-dependent shifts
@@ -95,8 +95,8 @@ Per-prediction feature contributions are computed via the **tree-path expectatio
 │        │                              │                      │
 │        ▼                              ▼                      │
 │  ┌──────────┐                ┌────────────────┐             │
-│  │ Prisma   │                │ AEGIS ML core  │             │
-│  │ (SQLite) │                │ (pure TS GBDT) │             │
+│  │ Prisma   │                │ VIGILIS ML core  │             │
+│  │ (SQLite) │                │ (pure TS GBDT)   │             │
 │  └──────────┘                └────────────────┘             │
 │        │                              │                      │
 │        ▼                              ▼                      │
