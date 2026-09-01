@@ -1,0 +1,233 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/*
+ * AEGIS — Merchant Loss Defense Intelligence
+ * Design system: premium dark, warm charcoal surfaces, burnt-amber accent.
+ * Inspired by Vercel/Linear/Stripe developer-tool aesthetics.
+ */
+
+:root {
+  --radius: 0.5rem;
+
+  /* Surfaces — warm charcoal (not pure black) */
+  --background: oklch(0.14 0.004 60);
+  --foreground: oklch(0.96 0.008 60);
+
+  --card: oklch(0.17 0.005 60);
+  --card-foreground: oklch(0.96 0.008 60);
+
+  --popover: oklch(0.18 0.006 60);
+  --popover-foreground: oklch(0.96 0.008 60);
+
+  /* Primary = amber (defense / signal) */
+  --primary: oklch(0.72 0.16 55);
+  --primary-foreground: oklch(0.16 0.01 60);
+
+  --secondary: oklch(0.22 0.006 60);
+  --secondary-foreground: oklch(0.92 0.008 60);
+
+  --muted: oklch(0.21 0.005 60);
+  --muted-foreground: oklch(0.66 0.012 60);
+
+  --accent: oklch(0.24 0.01 60);
+  --accent-foreground: oklch(0.96 0.008 60);
+
+  --destructive: oklch(0.62 0.22 27);
+  --destructive-foreground: oklch(0.98 0.01 60);
+
+  --border: oklch(0.26 0.008 60);
+  --input: oklch(0.22 0.006 60);
+  --ring: oklch(0.72 0.16 55);
+
+  --chart-1: oklch(0.72 0.16 55);   /* amber */
+  --chart-2: oklch(0.65 0.13 155);  /* emerald */
+  --chart-3: oklch(0.62 0.22 27);  /* red */
+  --chart-4: oklch(0.68 0.17 45);  /* orange */
+  --chart-5: oklch(0.78 0.14 80);  /* yellow */
+
+  --sidebar: oklch(0.12 0.004 60);
+  --sidebar-foreground: oklch(0.92 0.008 60);
+  --sidebar-primary: oklch(0.72 0.16 55);
+  --sidebar-primary-foreground: oklch(0.16 0.01 60);
+  --sidebar-accent: oklch(0.22 0.006 60);
+  --sidebar-accent-foreground: oklch(0.96 0.008 60);
+  --sidebar-border: oklch(0.22 0.006 60);
+  --sidebar-ring: oklch(0.72 0.16 55);
+
+  /* Risk-band specific tokens */
+  --risk-critical: oklch(0.62 0.22 27);
+  --risk-critical-bg: oklch(0.62 0.22 27 / 0.14);
+  --risk-critical-fg: oklch(0.85 0.16 27);
+  --risk-high: oklch(0.68 0.17 45);
+  --risk-high-bg: oklch(0.68 0.17 45 / 0.14);
+  --risk-high-fg: oklch(0.85 0.14 45);
+  --risk-elevated: oklch(0.78 0.14 80);
+  --risk-elevated-bg: oklch(0.78 0.14 80 / 0.14);
+  --risk-elevated-fg: oklch(0.88 0.12 80);
+  --risk-normal: oklch(0.65 0.13 155);
+  --risk-normal-bg: oklch(0.65 0.13 155 / 0.14);
+  --risk-normal-fg: oklch(0.82 0.12 155);
+}
+
+.dark {
+  /* Dark mode is the default; values mirror :root */
+  --background: oklch(0.14 0.004 60);
+  --foreground: oklch(0.96 0.008 60);
+  --card: oklch(0.17 0.005 60);
+  --card-foreground: oklch(0.96 0.008 60);
+  --popover: oklch(0.18 0.006 60);
+  --popover-foreground: oklch(0.96 0.008 60);
+  --primary: oklch(0.72 0.16 55);
+  --primary-foreground: oklch(0.16 0.01 60);
+  --secondary: oklch(0.22 0.006 60);
+  --secondary-foreground: oklch(0.92 0.008 60);
+  --muted: oklch(0.21 0.005 60);
+  --muted-foreground: oklch(0.66 0.012 60);
+  --accent: oklch(0.24 0.01 60);
+  --accent-foreground: oklch(0.96 0.008 60);
+  --destructive: oklch(0.62 0.22 27);
+  --destructive-foreground: oklch(0.98 0.01 60);
+  --border: oklch(0.26 0.008 60);
+  --input: oklch(0.22 0.006 60);
+  --ring: oklch(0.72 0.16 55);
+  --chart-1: oklch(0.72 0.16 55);
+  --chart-2: oklch(0.65 0.13 155);
+  --chart-3: oklch(0.62 0.22 27);
+  --chart-4: oklch(0.68 0.17 45);
+  --chart-5: oklch(0.78 0.14 80);
+  --sidebar: oklch(0.12 0.004 60);
+  --sidebar-foreground: oklch(0.92 0.008 60);
+  --sidebar-primary: oklch(0.72 0.16 55);
+  --sidebar-primary-foreground: oklch(0.16 0.01 60);
+  --sidebar-accent: oklch(0.22 0.006 60);
+  --sidebar-accent-foreground: oklch(0.96 0.008 60);
+  --sidebar-border: oklch(0.22 0.006 60);
+  --sidebar-ring: oklch(0.72 0.16 55);
+}
+
+* {
+  border-color: var(--border);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1, "tnum" 1;
+}
+
+/* Numeric / tabular data uses mono + tabular figures */
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(0.30 0.008 60);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.40 0.010 60);
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}
+
+/* Subtle ambient grid background for the app shell */
+.aegis-grid {
+  background-image:
+    linear-gradient(to right, oklch(0.22 0.006 60 / 0.4) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(0.22 0.006 60 / 0.4) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: -1px -1px;
+}
+
+/* Risk-band utilities */
+.band-critical { background-color: var(--risk-critical-bg); color: var(--risk-critical-fg); border-color: var(--risk-critical); }
+.band-high     { background-color: var(--risk-high-bg);     color: var(--risk-high-fg);     border-color: var(--risk-high); }
+.band-elevated { background-color: var(--risk-elevated-bg); color: var(--risk-elevated-fg); border-color: var(--risk-elevated); }
+.band-normal   { background-color: var(--risk-normal-bg);   color: var(--risk-normal-fg);   border-color: var(--risk-normal); }
+
+.text-risk-critical { color: var(--risk-critical-fg); }
+.text-risk-high     { color: var(--risk-high-fg); }
+.text-risk-elevated { color: var(--risk-elevated-fg); }
+.text-risk-normal   { color: var(--risk-normal-fg); }
+.bg-risk-critical   { background-color: var(--risk-critical); }
+.bg-risk-high       { background-color: var(--risk-high); }
+.bg-risk-elevated   { background-color: var(--risk-elevated); }
+.bg-risk-normal     { background-color: var(--risk-normal); }
+.border-risk-critical { border-color: var(--risk-critical); }
+.border-risk-high     { border-color: var(--risk-high); }
+.border-risk-elevated { border-color: var(--risk-elevated); }
+.border-risk-normal   { border-color: var(--risk-normal); }
+
+/* Glow accent for primary actions */
+.glow-amber {
+  box-shadow: 0 0 0 1px oklch(0.72 0.16 55 / 0.3), 0 4px 24px -8px oklch(0.72 0.16 55 / 0.5);
+}
+
+/* Soft pulse for live indicators */
+@keyframes aegis-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+.animate-aegis-pulse {
+  animation: aegis-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Focus ring */
+*:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}

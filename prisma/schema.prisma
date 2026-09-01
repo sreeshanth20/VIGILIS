@@ -1,0 +1,113 @@
+// AEGIS — Merchant Loss Defense Intelligence
+// Prisma schema (SQLite). Stores transactions, model scores, and analyst decisions.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+/// A scored transaction. Features are stored verbatim so the investigation
+/// view can render them without re-featurising. The model's risk score,
+/// risk band, and top contributing factors are also stored.
+model Transaction {
+  // Primary identity
+  id        String   @id // e.g. TX_0000001
+  ts        BigInt   // unix epoch (ms)
+
+  // Merchant / product context
+  merchantId       String
+  merchantCategory String
+  category         String
+  categoryBaseRisk Float
+  isHighValueCategory Boolean
+
+  // Customer
+  customerId       String
+  isGuest          Boolean
+  customerAccountAgeDays  Int
+  customerPriorOrders      Int
+  customerPriorReturns     Int
+  customerPriorChargebacks Int
+  customerReturnRate       Float
+  customerChargebackRate   Float
+  customerLtv              Int
+
+  // Order
+  amount    Int
+  quantity  Int
+
+  // Payment
+  paymentMethod String
+  isCod         Boolean
+  isPrepaid     Boolean
+  isUpi         Boolean
+  isEmi         Boolean
+  isGiftCard    Boolean
+
+  // Geography
+  shippingCity    String
+  shippingTier    Int
+  shippingState   String
+  billingCity     String
+  addressMismatch Boolean
+
+  // Behavioural signals
+  deviceId                 String
+  deviceSeenCount24h       Int
+  ipHash                   String
+  ipSeenCount24h           Int
+  customerOrdersLast1h     Int
+  customerOrdersLast24h    Int
+  customerOrdersLast7d     Int
+  customerVelocity7d       Float
+  timeSinceLastOrderHours  Float?
+  isNewDeviceForCustomer   Boolean
+
+  // Temporal
+  isFestivalPeriod Boolean
+  festivalName     String?
+  isWeekend        Boolean
+  isNightTime      Boolean
+  dayOfYear        Int
+  hour             Int
+
+  // Model output (computed by the seed script via the trained artifact)
+  riskScore   Float  // probability [0,1] of chargeback/RTO
+  riskBand    String // critical | high | elevated | normal
+  topFactorsJson String // JSON array of {feature, description, group, value, contribution}
+
+  // Outcome (realised only after the outcome window has elapsed)
+  outcomeRealized   Boolean @default(false)
+  hadChargebackOrRto Boolean @default(false)
+  outcomeKind       String  @default("clean") // clean | chargeback | rto | return_fraud
+  lossAmount        Int     @default(0)
+
+  // Analyst decision
+  decision     String? // approve | hold | escalate | dismiss
+  decisionNote String?
+  decidedAt    DateTime?
+  decidedBy    String?
+
+  createdAt DateTime @default(now())
+
+  @@index([ts])
+  @@index([riskScore])
+  @@index([merchantId])
+  @@index([customerId])
+  @@index([riskBand])
+  @@index([outcomeRealized])
+}
+
+/// Append-only audit log of analyst actions for reproducibility.
+model AuditLog {
+  id        String   @id @default(cuid())
+  ts        DateTime @default(now())
+  action    String   // decision | threshold_change | note_added
+  actor     String   @default("analyst")
+  targetTx  String?
+  payloadJson String?
+}
