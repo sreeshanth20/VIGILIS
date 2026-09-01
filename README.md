@@ -259,6 +259,3 @@ Run with `bun test`.
 
 ---
 
-## License
-
-This project is a technical submission. All code is original and provided as-is.
